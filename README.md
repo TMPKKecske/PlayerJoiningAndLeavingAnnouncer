@@ -4,10 +4,10 @@ The name of the player will be colored as same as their rank's color, but it can
 # Configs 
 | Config option  | Value type | Default value | Description
 | ------------- | ------------- | ------------- | ------------- |
-| IsEnabled  | bool  | Content Cell  | Content Cell  |
-| IsRankColoringEnabled  | bool  | Content Cell  | Content Cell  |
-| NoRankColor  | string  | Content Cell  | Content Cell  |
-| JoinMessage  | string  | Content Cell  | Content Cell  |
-| JoinMessageDuration  | int  | Content Cell  | Content Cell  |
-| LeftMessage  | string  | Content Cell  | Content Cell  |
-| LeftMessageDuration  | int  | Content Cell  | Content Cell  |
+| IsEnabled  | bool  | true  | Content Cell  |
+| IsRankColoringEnabled  | bool  | true  | Content Cell  |
+| NoRankColor  | string  | yellow | Content Cell  |
+| JoinMessage  | string  | {playername} joined the server!  | Content Cell  |
+| JoinMessageDuration  | int  | 3  | Content Cell  |
+| LeftMessage  | string  | {playername} left the server!  | Content Cell  |
+| LeftMessageDuration  | int  | 3  | Content Cell  |
