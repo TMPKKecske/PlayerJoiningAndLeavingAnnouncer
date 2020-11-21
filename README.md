@@ -4,9 +4,9 @@ The name of the player will be colored as same as their rank's color, but it can
 # Configs 
 | Config option  | Value type | Default value | Description
 | ------------- | ------------- | ------------- | ------------- |
-| IsEnabled  | bool  | true  | Content Cell  |
-| IsRankColoringEnabled  | bool  | true  | Content Cell  |
-| NoRankColor  | string  | yellow | Content Cell  |
+| IsEnabled  | bool  | true  | Determines if the plugin is available ot not.  |
+| IsRankColoringEnabled  | bool  | true  | Allow the plugin to display the player's name's in the color of their ranks. |
+| NoRankColor  | string  | yellow | The color of the players with no ranks.  |
 | JoinMessage  | string  | {playername} joined the server!  | Content Cell  |
 | JoinMessageDuration  | int  | 3  | Content Cell  |
 | LeftMessage  | string  | {playername} left the server!  | Content Cell  |
