@@ -13,4 +13,5 @@ This plugin can display a custom message if somebody joins or leaves the server.
 ## All available rank colors in scp sl with names:
 https://en.scpslgame.com/index.php/Docs:Permissions
 # Thank you! :D
-For checking out my plugin, I hope you will use it some time in your own server. If you have any questions or suggestions contact me on discord: TMPKKecske#9536
+For checking out my plugin, I hope you will use it sometime in your server. If you have any questions or suggestions contact me on discord: TMPKKecske#9536.
+
