@@ -3,7 +3,7 @@ This plugin can display a custom message if somebody joins or leaves the server.
 # Configs 
 | Config option  | Value type | Default value | Description
 | ------------- | ------------- | ------------- | ------------- |
-| IsEnabled  | bool  | true  | Determines if the plugin is available ot not.  |
+| IsEnabled  | bool  | true  | Determines if the plugin is available or not.  |
 | IsRankColoringEnabled  | bool  | true  | Allow the plugin to display the player's name's in the color of their ranks. |
 | NoRankColor  | string  | yellow | The color of the players with no ranks.  |
 | JoinMessage  | string  | {playername} joined the server!  | The message which is displayed when a player joins the server. |
