@@ -10,7 +10,7 @@ This plugin can display a custom message if somebody joins or leaves the server.
 | JoinMessageDuration  | int  | 3  | The duration of the message which is displayed when a player joins the server. |
 | LeftMessage  | string  | {playername} left the server!  | The message which is displayed when a player leaves the server. (set it to blank to disable it) |
 | LeftMessageDuration  | int  | 3  | The duration of the message which is displayed when a player leaves the server. |
-## All available rank colors in scp sl with names:
+## All available rank colors in scp sl (at the bottom of the page):
 https://en.scpslgame.com/index.php/Docs:Permissions
 # Thank you! :D
 For checking out my plugin, I hope you will use it sometime in your server. If you have any questions or suggestions contact me on discord: TMPKKecske#9536.
