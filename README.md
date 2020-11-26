@@ -17,7 +17,9 @@ specific_players | a list named as specific players steam id the with two string
 #### The values of ```how_specific_players_are_displayed``` can be:
 
 -0 wich means the plugin will display everyone as it is told to in the config variables seem in upper rows of the config
+
 -1 wich means the players given in specific_players should be displayed with a costume message but so do the others with the default joining and leaving message
+
 -2 wich means only the players given in specific_players should be displayed only with the message given in it
 
 #### You can add more players to the ```specific_players``` list by adding this config variable again.
