@@ -14,6 +14,11 @@ This plugin can display a custom message if somebody joins or leaves the server.
 | how_specific_players_are_displayed | int | 0 | It determines what will the plugin do with the players listed in ```specific_players``` variable.
 specific_players | a list named as specific players steam id the with two strings | JoinMessage: {playername} joined the server! LeftMessage: {playername} left the server! | It determines who will be the specific player who will have a costume leaving and joining message
 
+The values of ```how_specific_players_are_displayed``` can be:
+-0 wich means the plugin will display everyone as it is told to in the config variables seem in upper rows of the config
+-1 wich means the players given in specific_players should be displayed with a costume message but so do the others with the default joining and leaving message
+-2 wich means only the players given in specific_players should be displayed only with the message given in it
+
 You can add more players to the ```specific_players``` list by adding this config variable again.
 Like this:
 ```  
@@ -30,4 +35,3 @@ Like this:
 https://en.scpslgame.com/index.php/Docs:Permissions
 # Thank you! :D
 For checking out my plugin, I hope you will use it sometime in your server. If you have any questions or suggestions contact me on discord: ```TMPKKecske#9536```.
-
