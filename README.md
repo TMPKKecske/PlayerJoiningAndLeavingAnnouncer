@@ -3,14 +3,16 @@ This plugin can display a custom message if somebody joins or leaves the server.
 # Configs 
 | Config option  | Value type | Default value | Description
 | ------------- | ------------- | ------------- | ------------- |
-| IsEnabled  | bool  | true  | Determines if the plugin is available or not.  |
-| IsRankColoringEnabled  | bool  | true  | Allow the plugin to display the player's name's in the color of their ranks. |
-| NoRankColor  | string  | yellow | The color of the players with no ranks.  (set it to blank to make the plugin not color the non-ranked player's name) |
-| JoinMessage  | string  | {playername} joined the server!  | The message which is displayed when a player joins the server. |
-| JoinMessageDuration  | int  | 3  | The duration of the message which is displayed when a player joins the server. |
-| LeftMessage  | string  | {playername} left the server!  | The message which is displayed when a player leaves the server. (set it to blank to disable it) |
-| LeftMessageDuration  | int  | 3  | The duration of the message which is displayed when a player leaves the server. |
-| OnlyRankedAreDisplayed  | bool  | false  | This decides if the join message is only displayed when a ranked player joins or not. |
+| is_enabled  | bool  | true  | Determines if the plugin is available or not.  |
+| is_rank_coloring_enabled  | bool  | true  | Allow the plugin to display the player's name's in the color of their ranks. |
+| no_rank_color  | string  | yellow | The color of the players with no ranks.  (set it to blank to make the plugin not color the non-ranked player's name) |
+| join_message  | string  | {playername} joined the server!  | The message which is displayed when a player joins the server. |
+| join_message_duration  | int  | 3  | The duration of the message which is displayed when a player joins the server. |
+| left_message  | string  | {playername} left the server!  | The message which is displayed when a player leaves the server. (set it to blank to disable it) |
+| left_message_duration  | int  | 3  | The duration of the message which is displayed when a player leaves the server. |
+| only_ranked_are_displayed | bool  | false  | This decides if the join message is only displayed when a ranked player joins or not.| 
+| how_specific_players_are_displayed | int | 0 | It determines what will the plugin do with the players listed in ```specific_players``` variable.
+
 ## All available rank colors in scp sl (at the bottom of the page):
 https://en.scpslgame.com/index.php/Docs:Permissions
 # Thank you! :D
