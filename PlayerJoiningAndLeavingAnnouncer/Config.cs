@@ -29,7 +29,7 @@ namespace PlayerJoiningAnnouncer
         public bool OnlyRankedAreDisplayed { get; set; } = false;
         [Description("Should only players with a specific steam id be displayed and how? Available modes: 0 - off , 1 - the players given should be displayed with a costume message and so do the others with the default, 2 - only the players given should be displayed only with the message given")]        
         public int HowSpecificPlayersAreDisplayed { get; set; } = 0;
-        [Description("Give the steam id of the players. And the costume messages which will be displayed when they join/leave.")]        
+        [Description("Give the steam id of the players. And the costume messages which will be displayed when they join/leave. ")]        
         public Dictionary<string, List<string>> SpecificPlayers { get; set; } = new Dictionary<string, List<string>>() { ["SomeSteamID@steam"] = new List<string> { "JoinMessage: {playername} joined the server!", "LeftMessage: {playername} left the server!" } };
     }
 }

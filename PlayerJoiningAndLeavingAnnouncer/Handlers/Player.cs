@@ -105,20 +105,20 @@ namespace PlayerJoiningAnnouncer.Handlers
                             if (IsColoredRanksEnabled == true)
                             {
                                 string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                Map.Broadcast(Convert.ToUInt16(JoinedMessageDuration), entry.Value[0].Remove(0, 13).Replace("{playername}", playername));                                
+                                Map.Broadcast(Convert.ToUInt16(JoinedMessageDuration), entry.Value[0].Remove(0, 13).Replace("{playername}", playername));
+                                break;
                             }
                             else
                             {
                                 Map.Broadcast(Convert.ToUInt16(JoinedMessageDuration), entry.Value[0].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
+                                break;
                             }
                         }
                         else
                         {
                             if (iteration == Plugin.Instance.Config.SpecificPlayers.Count)
                             {
-                                iteration = 0;
-                                Log.Info(ev.Player.UserId + " and " + entry.Key);
-                                Log.Info(entry.Value[1]);
+                                iteration = 0;                                
                                 goto case 0;
                             }
                         }
@@ -199,20 +199,20 @@ namespace PlayerJoiningAnnouncer.Handlers
                             if (IsColoredRanksEnabled == true)
                             {
                                 string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                Map.Broadcast(Convert.ToUInt16(LeftMessageDuration), entry.Value[1].Remove(0, 13).Replace("{playername}", playername));                                
+                                Map.Broadcast(Convert.ToUInt16(LeftMessageDuration), entry.Value[1].Remove(0, 13).Replace("{playername}", playername));
+                                break;
                             }
                             else
                             {
                                 Map.Broadcast(Convert.ToUInt16(LeftMessageDuration), entry.Value[1].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
+                                break;
                             }
                         }
                         else
                         {
                             if (iteration == Plugin.Instance.Config.SpecificPlayers.Count)
                             {
-                                iteration = 0;
-                                Log.Info(ev.Player.UserId + " and " + entry.Key);
-                                Log.Info(entry.Value[1]);
+                                iteration = 0;                                
                                 goto case 0;
                             }
                         }
