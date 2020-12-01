@@ -1,5 +1,5 @@
 # PlayerJoiningAndLeavingAnnouncer
-This plugin can display a custom message if somebody joins or leaves the server. It can say any message you want, feel free to change it in the config of the plugin. The name of the player will be colored as same as their rank's color, but it can be turned off. If a player hasn't got a rank it can be colored too if you want, it's your choice.You can have the option to make the plugin only display the players with a rank. You can even reference to specific players by giving a steam id and a custom leave and join message. 
+This plugin can display a custom message if somebody joins or leaves the server. It can say any message you want, feel free to change it in the config of the plugin. The name of the player will be colored as same as their rank's color, but it can be turned off. If a player hasn't got a rank it can be colored too if you want, it's your choice. You can have the option to make the plugin only display the players with a rank. You can even refer to specific players by giving a steam id and a custom leave and join message.
 # Configs 
 | Config option  | Value type | Default value | Description
 | ------------- | ------------- | ------------- | ------------- |
