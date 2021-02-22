@@ -3,6 +3,7 @@ using Exiled.Events.EventArgs;
 using System;
 using System.Collections.Generic;
 using MEC;
+using System.Security.Policy;
 
 namespace PlayerJoiningAnnouncer.Handlers
 {
@@ -54,191 +55,172 @@ namespace PlayerJoiningAnnouncer.Handlers
         {
             Timing.CallDelayed(0.3f, () => 
             {
-                Map.ClearBroadcasts();
-                string ColoredName;
+                Map.ClearBroadcasts();               
                 switch (OnlySpecificPlayersBeDisplayedMode)
                 {
                     case 0:
-                        if (IsColoredRanksEnabled == true)
-                        {
-                            if (OnlyRankedPlayersAreDisplayed == false)
-                            {
-                                ColoredName = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ColoredName));
-                            }
-                            else
-                            {
-                                if (ev.Player.RankColor != "default")
-                                {
-                                    ColoredName = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ColoredName));
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (OnlyRankedPlayersAreDisplayed == false)
-                            {
-                                Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ev.Player.Nickname));
-                            }
-                            else
-                            {
-                                if (ev.Player.RankColor != "default")
-                                {
-                                    Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ev.Player.Nickname));
-                                }
-                            }
-                        }
-                        break;
+                        OnlySpecificPlayersBeDisplayedMode0(true, ev.Player);
+                    break;
 
                     case 1:
-                        int iteration = 0;
-                        foreach (KeyValuePair<string, List<string>> entry in Plugin.Singleton.Config.SpecificPlayers)
-                        {
-                            iteration++;
-                            if (ev.Player.UserId == entry.Key)
-                            {
-                                if (IsColoredRanksEnabled == true)
-                                {
-                                    string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(JoinedMessageDuration, entry.Value[0].Remove(0, 13).Replace("{playername}", playername));
-                                    break;
-                                }
-                                else
-                                {
-                                    Map.Broadcast(JoinedMessageDuration, entry.Value[0].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                if (iteration == Plugin.Singleton.Config.SpecificPlayers.Count)
-                                {
-                                    iteration = 0;
-                                    goto case 0;
-                                }
-                            }
-                        }
-                        break;
+                        OnlySpecificPlayersBeDisplayedMode1(true, ev.Player);
+                    break;
 
                     case 2:
-                        foreach (KeyValuePair<string, List<string>> entry in Plugin.Singleton.Config.SpecificPlayers)
-                        {
-                            if (ev.Player.UserId == entry.Key)
-                            {
-                                if (IsColoredRanksEnabled == true)
-                                {
-                                    string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(JoinedMessageDuration, entry.Value[0].Remove(0, 13).Replace("{playername}", playername));
-                                }
-                                else
-                                {
-                                    Map.Broadcast(JoinedMessageDuration, entry.Value[0].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
-                                }
-                            }
-                        }
-                        break;
+                        OnlySpecificPlayersBeDisplayedMode2(true, ev.Player);
+                    break;
 
                     default:
                         Log.Warn("The OnlySpecificPlayersBeDisplayedMode config variable can only be 0 - off, 1 - the players given should be displayed with a costume mesage and so do the others with the default, 2 - only the players given should be displayed only with the message given.");
-                        break;
+                    break;
                 }
             });
         }
 
         UInt16 LeftMessageDuration = Plugin.Singleton.Config.LeftMessageDuration;
-        string LeftMessage = Plugin.Singleton.Config.LeftMessage;
+        string LeftMessage = Plugin.Singleton.Config.LeftMessage;        
         public void OnDerstroy(DestroyingEventArgs ev)
         {
-                Map.ClearBroadcasts();
-                string ColoredName;
+                Map.ClearBroadcasts();                
                 switch (OnlySpecificPlayersBeDisplayedMode)
                 {
                     case 0:
-                        if (IsColoredRanksEnabled == true)
-                        {
-                            if (OnlyRankedPlayersAreDisplayed == false)
-                            {
-                                ColoredName = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ColoredName));
-                            }
-                            else
-                            {
-                                if (ev.Player.RankColor != "default")
-                                {
-                                    ColoredName = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ColoredName));
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (OnlyRankedPlayersAreDisplayed == false)
-                            {
-                                Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ev.Player.Nickname));
-                            }
-                            else
-                            {
-                                if (ev.Player.RankColor != "default")
-                                {
-                                    Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ev.Player.Nickname));
-                                }
-                            }
-                        }
-                        break;
-
+                        OnlySpecificPlayersBeDisplayedMode0(false, ev.Player);
+                    break;
+                    
                     case 1:
-                        int iteration = 0;
-                        foreach (KeyValuePair<string, List<string>> entry in Plugin.Singleton.Config.SpecificPlayers)
-                        {
-                            iteration++;
-                            if (ev.Player.UserId == entry.Key)
-                            {
-                                if (IsColoredRanksEnabled == true)
-                                {
-                                    string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(LeftMessageDuration, entry.Value[1].Remove(0, 13).Replace("{playername}", playername));
-                                    break;
-                                }
-                                else
-                                {
-                                    Map.Broadcast(LeftMessageDuration, entry.Value[1].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
-                                    break;
-                                }
-                            }
-                            else
-                            {
-                                if (iteration == Plugin.Singleton.Config.SpecificPlayers.Count)
-                                {
-                                    iteration = 0;
-                                    goto case 0;
-                                }
-                            }
-                        }
-                        break;
+                        OnlySpecificPlayersBeDisplayedMode1(false, ev.Player);
+                    break;
 
                     case 2:
-                        foreach (KeyValuePair<string, List<string>> entry in Plugin.Singleton.Config.SpecificPlayers)
-                        {
-                            if (ev.Player.UserId == entry.Key)
-                            {
-                                if (IsColoredRanksEnabled == true)
-                                {
-                                    string playername = $"<color={ ColorFix(ev.Player.RankColor) }>{ev.Player.Nickname}</color>";
-                                    Map.Broadcast(LeftMessageDuration, entry.Value[1].Remove(0, 13).Replace("{playername}", playername));
-                                }
-                                else
-                                {
-                                    Map.Broadcast(LeftMessageDuration, entry.Value[1].Remove(1, 13).Replace("{playername}", ev.Player.Nickname));
-                                }
-                            }
-                        }
-                        break;
+                        OnlySpecificPlayersBeDisplayedMode2(false, ev.Player);
+                    break;
 
                     default:
                         Log.Warn("The OnlySpecificPlayersBeDisplayedMode config variable can only be 0 - The specific players in the list are not displayed differently, 1 - the players given should be displayed with a costume mesage and so do the others with the default, 2 - only the players given should be displayed only with the message given.");
-                        break;
+                    break;
                 }
-        }            
+        }
+
+        void OnlySpecificPlayersBeDisplayedMode0(bool IsJoined, Exiled.API.Features.Player ply)
+        {
+            string ColoredName;
+            if (IsColoredRanksEnabled == true)
+            {
+                if (OnlyRankedPlayersAreDisplayed == false)
+                {
+                    ColoredName = $"<color={ ColorFix(ply.RankColor) }>{ply.Nickname}</color>";
+                    if (IsJoined)
+                    {
+                        Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ColoredName));
+                    }
+                    else
+                    {
+                        Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ColoredName));
+                    }
+
+                }
+                else
+                {
+                    if (ply.RankColor != "default")
+                    {
+                        ColoredName = $"<color={ ColorFix(ply.RankColor) }>{ply.Nickname}</color>";
+                        if (IsJoined)
+                        {
+                            Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ColoredName));
+                        }
+                        else
+                        {
+                            Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ColoredName));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (OnlyRankedPlayersAreDisplayed == false)
+                {
+                    if (IsJoined)
+                    {
+                        Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ply.Nickname));
+                    }
+                    else
+                    {
+                        Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ply.Nickname));
+                    }
+                }
+                else
+                {
+                    if (ply.RankColor != "default")
+                    {
+                        if (IsJoined)
+                        {
+                            Map.Broadcast(JoinedMessageDuration, JoinedMessage.Replace("{playername}", ply.Nickname));
+                        }
+                        else 
+                        {
+                            Map.Broadcast(LeftMessageDuration, LeftMessage.Replace("{playername}", ply.Nickname));
+                        }
+                    }
+                }
+            }
+        }
+
+        void OnlySpecificPlayersBeDisplayedMode1(bool IsJoined, Exiled.API.Features.Player ply)
+        {
+            if (Plugin.Singleton.Config.SpecificPlayers.ContainsKey(ply.UserId))
+            {
+                List<String> Messages = Plugin.Singleton.Config.SpecificPlayers[ply.UserId];
+
+                if (IsColoredRanksEnabled == true)
+                {
+                    string playername = $"<color={ ColorFix(ply.RankColor) }>{ply.Nickname}</color>";
+                    if (IsJoined)
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[0].Remove(0, 13).Replace("{playername}", playername));
+                    }
+                    else
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[1].Remove(0, 13).Replace("{playername}", playername));
+                    }
+                }
+            }
+            else 
+            {
+                OnlySpecificPlayersBeDisplayedMode0(IsJoined, ply);
+            }
+        }
+
+        void OnlySpecificPlayersBeDisplayedMode2(bool IsJoined, Exiled.API.Features.Player ply)
+        {
+            if (Plugin.Singleton.Config.SpecificPlayers.ContainsKey(ply.UserId)) 
+            {
+                List<String> Messages = Plugin.Singleton.Config.SpecificPlayers[ply.UserId];
+
+                if (IsColoredRanksEnabled == true)
+                {
+                    string playername = $"<color={ ColorFix(ply.RankColor) }>{ply.Nickname}</color>";
+                    if (IsJoined)
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[0].Remove(0, 13).Replace("{playername}", playername));
+                    }
+                    else 
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[1].Remove(0, 13).Replace("{playername}", playername));
+                    }                   
+                }
+                else
+                {
+                    if (IsJoined)
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[0].Remove(1, 13).Replace("{playername}", ply.Nickname));
+                    }
+                    else 
+                    {
+                        Map.Broadcast(LeftMessageDuration, Messages[1].Remove(1, 13).Replace("{playername}", ply.Nickname));
+                    }
+                }
+            }
+        }
     }
 }
